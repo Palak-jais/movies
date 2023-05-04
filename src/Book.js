@@ -8,7 +8,7 @@ function Book(){
     const[name,setName]=useState("");
     const booked=()=>{
     localStorage.setItem({name:name,email:email},true);
-    alert("currently unavailable")
+    
 
     }
     return <div className="book">
