@@ -6,15 +6,23 @@ function Book(){
     const {movie}=location.state;
     const [email,setEmail]=useState("");
     const[name,setName]=useState("");
-    const booked=()=>{
+    const booked=(e)=>{
+     {e.preventDefault()}
+    if(!name||!email){
+    alert(" Please fill details")
+    
+    }
+    else{
+    
     localStorage.setItem({name:name,email:email},true);
+    alert("Currently unavailable");
     
 
     }
     return <div className="book">
     <p className="book-p">Book Show</p>
     <div className="data">
-    <form onSubmit={booked()}>
+    <form >
     <label>Email:</label>
     <input type="email" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Enter your email here" required/>
     <label>Name:</label>
@@ -28,7 +36,7 @@ function Book(){
         <label>Day of Show:</label>
         <input type="text" value={movie.show.schedule.days} readOnly/>
         <div className="btn">
-        <button onClick={(e)=>e.preventDefault()} type="submit" >Book Show</button>
+        <button onClick={booked} type="submit" >Book Show</button>
         
         
         </div>
